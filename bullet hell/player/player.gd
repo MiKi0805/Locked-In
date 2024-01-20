@@ -67,7 +67,7 @@ func _teleportation(delta):
 			dis_single = dis
 			teleport_pos = mousePos
 			duration = dis_single / 400
-			duration = clamp(duration, -0.1, 1.5)
+			duration = clamp(duration, -0.1, 1)
 			apply = true
 		else:
 			if duration <= 0:
