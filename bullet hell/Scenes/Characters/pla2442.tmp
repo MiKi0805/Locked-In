@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjskf55pkd7wl"]
+
+[ext_resource type="Script" path="res://Scripts/Characters' Scripts/player.gd" id="1_ulmgi"]
+[ext_resource type="Script" path="res://Scripts/Objects' Scripts/weapons.gd" id="2_h0bmq"]
+[ext_resource type="Script" path="res://Scripts/Characters' Scripts/player-movement.gd" id="2_vlsnh"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_ulmgi")
+
+[node name="Physics" type="CharacterBody2D" parent="."]
+script = ExtResource("2_vlsnh")
+
+[node name="Main collision" type="CollisionPolygon2D" parent="Physics"]
+z_index = 1
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(0.769043, 0.769043)
+polygon = PackedVector2Array(-17.0667, -17.0667, 17.0667, -17.0667, 17.0667, 17.0667, -17.0667, 17.0667)
+
+[node name="Texture" type="Polygon2D" parent="Physics"]
+color = Color(0.933333, 0.52549, 0.584314, 1)
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
+
+[node name="Weapons" type="Node2D" parent="."]
+script = ExtResource("2_h0bmq")
+
+[node name="Bullet spawn" type="Marker2D" parent="Weapons"]
+unique_name_in_owner = true
+position = Vector2(0, -20)
+
+[node name="Fire rate timer" type="Timer" parent="Weapons"]
+unique_name_in_owner = true
+
+[node name="Weapon1" type="Polygon2D" parent="Weapons"]
+color = Color(0.933333, 0.52549, 0.584314, 1)
+polygon = PackedVector2Array(-5, -15, -5, -25, 5, -25, 5, -15)
+
+[node name="bullet container" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Weapons/Fire rate timer" to="Weapons" method="fire_bullet"]

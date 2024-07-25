@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://j552kjegui3c"]
+
+[sub_resource type="Curve" id="Curve_dixl7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_7k177"]
+offsets = PackedFloat32Array(0, 0.0652174, 0.679348, 0.994565)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Player particle" type="CPUParticles2D"]
+z_index = -2
+amount = 50
+lifetime = 5.0
+lifetime_randomness = 0.18
+emission_shape = 1
+emission_sphere_radius = 10.43
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 2.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_dixl7")
+color = Color(1, 1, 1, 0.5)
+color_ramp = SubResource("Gradient_7k177")

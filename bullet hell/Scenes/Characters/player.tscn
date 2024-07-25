@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjskf55pkd7wl"]
+
+[ext_resource type="Script" path="res://Scripts/Characters' Scripts/player.gd" id="1_ulmgi"]
+[ext_resource type="PackedScene" uid="uid://w7tystem8ay4" path="res://Scenes/Objects/trail.tscn" id="2_f5hrv"]
+[ext_resource type="Script" path="res://Scripts/Objects' Scripts/weapons.gd" id="2_h0bmq"]
+[ext_resource type="PackedScene" uid="uid://kb07bgnpx8at" path="res://Scenes/Components/health_system.tscn" id="3_bbgi3"]
+[ext_resource type="PackedScene" uid="uid://j552kjegui3c" path="res://Scenes/Objects/player_particle.tscn" id="4_a6d0t"]
+[ext_resource type="Texture2D" uid="uid://dx0s46g6dnewc" path="res://Asset/mask.png" id="5_2alxr"]
+[ext_resource type="Script" path="res://Scripts/Objects' Scripts/player_particle_control.gd" id="5_rwtrk"]
+
+[sub_resource type="Gradient" id="Gradient_6w4jn"]
+offsets = PackedFloat32Array(0, 0.957447)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ptqtv"]
+gradient = SubResource("Gradient_6w4jn")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.816239, 0.179487)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+light_mask = 2
+collision_layer = 8
+script = ExtResource("1_ulmgi")
+
+[node name="Trail" parent="." instance=ExtResource("2_f5hrv")]
+thickness = 10.0
+color = Color(0.101961, 0.584314, 0.54902, 1)
+
+[node name="Main collision" type="CollisionPolygon2D" parent="."]
+z_index = 1
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(0.769043, 0.769043)
+polygon = PackedVector2Array(-13.0032, -13.0032, 13.0032, -13.0032, 13.0032, 13.0032, -13.0032, 13.0032)
+
+[node name="Main texture" type="Polygon2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+color = Color(0.105882, 0.584314, 0.552941, 1)
+polygon = PackedVector2Array(-15, 15, -15, -15, 15, -15, 15, 15)
+
+[node name="mask" type="Sprite2D" parent="."]
+self_modulate = Color(0.219608, 0.0862745, 0.192157, 1)
+light_mask = 0
+visibility_layer = 2
+z_index = -5
+scale = Vector2(1.225, 1.225)
+texture = ExtResource("5_2alxr")
+
+[node name="Weapons" type="Node2D" parent="."]
+rotation = 1.57079
+script = ExtResource("2_h0bmq")
+
+[node name="Bullet spawn" type="Marker2D" parent="Weapons"]
+unique_name_in_owner = true
+
+[node name="Weapon1" type="Polygon2D" parent="Weapons"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, 12.5)
+scale = Vector2(1, 1.5)
+color = Color(0.105882, 0.584314, 0.552941, 1)
+polygon = PackedVector2Array(-5, -15, -5, -25, 5, -25, 5, -15)
+
+[node name="Health system" parent="." instance=ExtResource("3_bbgi3")]
+
+[node name="Area2D" parent="Health system" index="0"]
+collision_mask = 4
+
+[node name="CollisionPolygon2D" parent="Health system/Area2D" index="0"]
+polygon = PackedVector2Array(-15, -15, 15, -15, 15, 15, -15, 15)
+
+[node name="particle" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_rwtrk")
+
+[node name="bullet particle" type="Marker2D" parent="particle"]
+
+[node name="Player particle" parent="particle" instance=ExtResource("4_a6d0t")]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 12
+energy = 0.7
+shadow_enabled = true
+shadow_color = Color(0.0383972, 0.0383972, 0.0383972, 0)
+shadow_item_cull_mask = 8
+texture = SubResource("GradientTexture2D_ptqtv")
+texture_scale = 15.66
+
+[connection signal="hp_zero" from="Health system" to="." method="hp_zero"]
+
+[editable path="Health system"]

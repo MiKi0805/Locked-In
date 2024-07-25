@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk63w4064apc"]
+
+[ext_resource type="Script" path="res://Scripts/Components' Scripts/hostiles_spawner.gd" id="1_wd7rg"]
+
+[node name="Hostiles spawner" type="Node2D"]
+script = ExtResource("1_wd7rg")
+
+[node name="Spawn delay" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="limiter" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="-x" type="Marker2D" parent="limiter"]
+scale = Vector2(1, 20)
+
+[node name="+x" type="Marker2D" parent="limiter"]
+scale = Vector2(1, 20)
+
+[node name="-y" type="Marker2D" parent="limiter"]
+scale = Vector2(20, 1)
+
+[node name="+y" type="Marker2D" parent="limiter"]
+scale = Vector2(20, 1)
+
+[connection signal="timeout" from="Spawn delay" to="." method="delay_timeout"]

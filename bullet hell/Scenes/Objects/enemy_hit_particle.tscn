@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn43oa2kgwcww"]
+
+[ext_resource type="Script" path="res://Scripts/Objects' Scripts/enemy_hit_particle.gd" id="1_8yoiv"]
+
+[sub_resource type="Curve" id="Curve_tym7h"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.665094, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.406593), -3.6004, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_wmupq"]
+offsets = PackedFloat32Array(0.576087, 0.728261, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.73, 0.73, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_o23ti"]
+min_value = -1.0
+_data = [Vector2(0, -0.758242), 0.0, 0.0, 0, 0, Vector2(1e-05, -0.538462), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Enemy hit particle" type="CPUParticles2D"]
+z_index = -1
+emitting = false
+amount = 100
+lifetime = 30.0
+one_shot = true
+speed_scale = 10.0
+explosiveness = 1.0
+lifetime_randomness = 0.17
+emission_shape = 1
+emission_sphere_radius = 15.22
+spread = 30.6
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+damping_min = 19.066
+damping_max = 69.928
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 5.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_tym7h")
+color = Color(0.886275, 0.109804, 0.380392, 1)
+color_ramp = SubResource("Gradient_wmupq")
+hue_variation_min = -0.1
+hue_variation_max = 0.09
+hue_variation_curve = SubResource("Curve_o23ti")
+script = ExtResource("1_8yoiv")
