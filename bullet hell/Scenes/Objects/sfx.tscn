@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bt7o8kk836k5b"]
+
+[node name="sfx" type="AudioStreamPlayer2D"]
+autoplay = true
+bus = &"SFX"

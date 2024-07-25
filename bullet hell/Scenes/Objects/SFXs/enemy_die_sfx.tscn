@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://hxd60kh3glc8"]
+
+[ext_resource type="PackedScene" uid="uid://bt7o8kk836k5b" path="res://Scenes/Objects/sfx.tscn" id="1_o6ih1"]
+[ext_resource type="AudioStream" uid="uid://fjblcmu60fvi" path="res://Asset/Audio/SFX/enemy die.wav" id="2_qek01"]
+
+[node name="enemy_die_sfx" instance=ExtResource("1_o6ih1")]
+stream = ExtResource("2_qek01")
+volume_db = 5.0

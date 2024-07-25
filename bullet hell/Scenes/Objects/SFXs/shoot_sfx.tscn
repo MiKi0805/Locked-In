@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://yvuovhv4tqv1"]
+
+[ext_resource type="PackedScene" uid="uid://bt7o8kk836k5b" path="res://Scenes/Objects/sfx.tscn" id="1_yhtqb"]
+[ext_resource type="AudioStream" uid="uid://ddu85ib14orsa" path="res://Asset/Audio/SFX/laserShoot.wav" id="2_2o0al"]
+
+[node name="shoot_sfx" instance=ExtResource("1_yhtqb")]
+stream = ExtResource("2_2o0al")
+volume_db = 5.0

@@ -34,6 +34,9 @@ var hp_after : int
 var leap : Vector2 = Vector2(0.1, 0.1)
 var target_scale : Vector2 = Vector2(1, 1)
 
+# die sfx
+var die_sfx : PackedScene = load("res://Scenes/Objects/SFXs/enemy_die_sfx.tscn")
+
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -122,6 +125,7 @@ func merge_ready():
 
 
 func _hp_zero():
+	get_parent().add_child(die_sfx.instantiate())
 	queue_free()
 
 

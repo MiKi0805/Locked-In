@@ -32,6 +32,9 @@ var bullet_intance
 #Particle
 @onready var particle_control = %particle
 
+#SFX
+var shoot_sfx : PackedScene = load("res://Scenes/Objects/SFXs/shoot_sfx.tscn")
+
 
 func _ready():
 	# set bullet_container node
@@ -87,3 +90,7 @@ func spawn_bullet():
 	
 	# spawn particle
 	particle_control.shoot_particle()
+	
+	#spawn sfx
+	var sfx = shoot_sfx.instantiate()
+	add_child(sfx)
