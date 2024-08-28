@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7ne0ls2swx63"]
+
+[ext_resource type="Script" path="res://Scripts/Objects' Scripts/bullet.gd" id="1_gykut"]
+[ext_resource type="PackedScene" uid="uid://w7tystem8ay4" path="res://Scenes/Objects/trail.tscn" id="2_qij33"]
+[ext_resource type="PackedScene" uid="uid://bf3ktvu4ry0y8" path="res://Scenes/Components/AttackComponent.tscn" id="3_7wdfi"]
+
+[sub_resource type="Gradient" id="Gradient_6iapk"]
+offsets = PackedFloat32Array(0.266304, 0.701087)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="bullet" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_gykut")
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+z_index = 1
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[node name="Texture" type="Polygon2D" parent="."]
+color = Color(0.996078, 0.658824, 0.372549, 1)
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[node name="Life time" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+amount = 5
+lifetime = 0.1
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color = Color(0.94902, 0.490196, 0.27451, 1)
+color_ramp = SubResource("Gradient_6iapk")
+
+[node name="Trail" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_qij33")]
+follow_mouse = false
+target = NodePath("..")
+thickness = 10.0
+color = Color(0.94902, 0.490196, 0.27451, 1)
+max_point = 8
+
+[node name="Attack Component" parent="." instance=ExtResource("3_7wdfi")]
+
+[connection signal="timeout" from="Life time" to="." method="life_timeout"]

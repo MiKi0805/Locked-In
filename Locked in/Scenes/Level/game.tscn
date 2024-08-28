@@ -1,0 +1,220 @@
+[gd_scene load_steps=19 format=3 uid="uid://x8yj7tjpf4e"]
+
+[ext_resource type="PackedScene" uid="uid://cnwcdx41ypgc5" path="res://Scenes/Components/control.tscn" id="1_2vwxy"]
+[ext_resource type="PackedScene" uid="uid://bjskf55pkd7wl" path="res://Scenes/Characters/player.tscn" id="1_dghe1"]
+[ext_resource type="PackedScene" uid="uid://bisi40wmwftdc" path="res://Scenes/Level/dev_panel.tscn" id="1_jrc0p"]
+[ext_resource type="PackedScene" uid="uid://cuquxrwahtlbq" path="res://Scenes/Objects/bullet_container.tscn" id="2_4xpmm"]
+[ext_resource type="Script" path="res://Scripts/Components' Scripts/pause.gd" id="2_ow6qs"]
+[ext_resource type="PackedScene" uid="uid://dk63w4064apc" path="res://Scenes/Components/hostiles_spawner.tscn" id="3_mdue1"]
+[ext_resource type="PackedScene" uid="uid://cwlnr3lptmfqc" path="res://Scenes/Objects/enemy_container.tscn" id="4_7l7t4"]
+[ext_resource type="PackedScene" uid="uid://di20sk2y4setv" path="res://Scenes/Objects/camera_2d.tscn" id="7_d4lyt"]
+[ext_resource type="Environment" uid="uid://cexcqbt153vkq" path="res://Utility/World ENV/Main world env.tres" id="7_knhai"]
+[ext_resource type="Script" path="res://Scripts/Objects' Scripts/camera_2d.gd" id="8_j72so"]
+[ext_resource type="Script" path="res://Scripts/Components' Scripts/exp_ui.gd" id="10_lppr5"]
+
+[sub_resource type="Gradient" id="Gradient_g001s"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pb4hb"]
+gradient = SubResource("Gradient_g001s")
+
+[sub_resource type="ImageTexture" id="ImageTexture_15xwc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovgr8"]
+bg_color = Color(0.413741, 0.189397, 0.367249, 1)
+skew = Vector2(1.5, 0)
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 6.0
+expand_margin_top = 11.0
+expand_margin_right = 7.0
+expand_margin_bottom = 11.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iotxs"]
+bg_color = Color(0.886275, 0.109804, 0.380392, 1)
+skew = Vector2(1.5, 0)
+border_width_right = 1024
+border_color = Color(0.981597, 0.288016, 0.47529, 1)
+border_blend = true
+expand_margin_top = 7.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="Curve" id="Curve_3vbvk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.766798, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_j21mg"]
+offsets = PackedFloat32Array(0, 0.0488889, 0.457778, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Game" type="Node2D"]
+
+[node name="Dev panel" parent="." instance=ExtResource("1_jrc0p")]
+offset_left = 240.0
+offset_top = 280.0
+offset_right = 240.0
+offset_bottom = 280.0
+node = [NodePath("../CanvasLayer/HSlider"), NodePath("../CanvasLayer/HSlider")]
+read = ["value", "value_before"]
+
+[node name="AudioControl" parent="." instance=ExtResource("1_2vwxy")]
+process_mode = 3
+script = ExtResource("2_ow6qs")
+
+[node name="Bullet container" parent="." instance=ExtResource("2_4xpmm")]
+
+[node name="XP Zone Container" type="Node2D" parent="."]
+
+[node name="Enemy container" parent="." instance=ExtResource("4_7l7t4")]
+
+[node name="spawner" parent="." instance=ExtResource("3_mdue1")]
+min_delay = 1.0
+max_delay = 2.0
+limit_spawn = true
+
+[node name="-x" parent="spawner/limiter" index="0"]
+position = Vector2(-47, 343)
+
+[node name="+x" parent="spawner/limiter" index="1"]
+position = Vector2(1199, 336)
+
+[node name="-y" parent="spawner/limiter" index="2"]
+position = Vector2(566, -26)
+
+[node name="+y" parent="spawner/limiter" index="3"]
+position = Vector2(556, 678)
+
+[node name="Player" parent="." instance=ExtResource("1_dghe1")]
+position = Vector2(575, 325)
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("_follow") instance=ExtResource("7_d4lyt")]
+zoom = Vector2(1.405, 1.405)
+script = ExtResource("8_j72so")
+_follow = NodePath("../Player")
+speed = 2.0
+weight_to_mouse = true
+follow_weight = 8.115
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+current = true
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Border" type="StaticBody2D" parent="World"]
+collision_layer = 32
+
+[node name="collision" type="CollisionPolygon2D" parent="World/Border"]
+polygon = PackedVector2Array(-25, 0, 1175, 0, 1175, 650, -25, 650, -25, 0, -50, -20, -50, 675, 1195, 675, 1195, -20, -50, -20)
+
+[node name="border visual" type="Polygon2D" parent="World/Border"]
+z_index = -6
+color = Color(0.413741, 0.189397, 0.367249, 1)
+polygon = PackedVector2Array(-25, 0, -55, -30, 1205, -30, 1205, 680, -55, 680, -55, -30, -25, 0, -25, 650, 1175, 650, 1175, 0)
+
+[node name="ColorRect" type="ColorRect" parent="World"]
+z_index = -7
+offset_left = -25.0
+offset_right = 1175.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.219608, 0.0862745, 0.192157, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = ExtResource("7_knhai")
+
+[node name="light" type="Node2D" parent="World"]
+
+[node name="PointLight2D" type="PointLight2D" parent="World/light"]
+position = Vector2(55.3448, 326.064)
+scale = Vector2(-3.32284, 10.8607)
+color = Color(0.823529, 0.737255, 0.454902, 1)
+energy = 0.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_pb4hb")
+
+[node name="PointLight2D2" type="PointLight2D" parent="World/light"]
+position = Vector2(575, 66)
+rotation = 1.57079
+scale = Vector2(-3.04159, 19.5031)
+color = Color(0.717647, 0.109804, 0.223529, 1)
+energy = 0.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_pb4hb")
+
+[node name="PointLight2D3" type="PointLight2D" parent="World/light"]
+position = Vector2(1090, 325)
+rotation = -3.14159
+scale = Vector2(-3.32284, 10.8607)
+color = Color(0.556863, 0.109804, 0.694118, 1)
+energy = 0.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_pb4hb")
+
+[node name="PointLight2D4" type="PointLight2D" parent="World/light"]
+position = Vector2(560, 575)
+rotation = 4.71238
+scale = Vector2(-3.04159, 19.5031)
+color = Color(0.717647, 0.109804, 0.223529, 1)
+energy = 0.5
+range_item_cull_mask = 7
+texture = SubResource("GradientTexture2D_pb4hb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 47.0
+offset_top = 28.0
+offset_right = -47.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_icons/grabber = SubResource("ImageTexture_15xwc")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_15xwc")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_15xwc")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ovgr8")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_iotxs")
+step = 0.05
+value = 1.45
+editable = false
+scrollable = false
+script = ExtResource("10_lppr5")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CanvasLayer/HSlider"]
+position = Vector2(16, 8)
+rotation = 1.01578
+emitting = false
+amount = 200
+lifetime = 2.0
+speed_scale = 2.0
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(1.845, 11.88)
+direction = Vector2(-3.75, 4.51)
+spread = 46.35
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 61.47
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+damping_min = 14.387
+damping_max = 28.358
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_3vbvk")
+color = Color(0.815686, 0.0470588, 0.152941, 1)
+color_ramp = SubResource("Gradient_j21mg")
+hue_variation_min = -0.42
+hue_variation_max = 0.31
+
+[node name="-x" type="Marker2D" parent="CanvasLayer/HSlider/CPUParticles2D"]
+top_level = true
+position = Vector2(49, 36)
+gizmo_extents = 8.0
+
+[node name="+x" type="Marker2D" parent="CanvasLayer/HSlider/CPUParticles2D"]
+top_level = true
+position = Vector2(1233, 36)
+gizmo_extents = 8.0
+
+[editable path="spawner"]

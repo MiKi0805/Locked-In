@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=3 uid="uid://c2cuhklajgtuu"]
+
+[ext_resource type="Script" path="res://Scripts/Characters' Scripts/challenger.gd" id="1_u7hqv"]
+[ext_resource type="Shader" uid="uid://dqv5odv02nd4h" path="res://Utility/blink_shader.tres" id="2_syqip"]
+[ext_resource type="PackedScene" uid="uid://baedjdrahvsqn" path="res://Scenes/Components/HitboxComponent.tscn" id="5_hluva"]
+[ext_resource type="PackedScene" uid="uid://bt7o8kk836k5b" path="res://Scenes/Objects/sfx.tscn" id="5_l88iv"]
+[ext_resource type="PackedScene" uid="uid://kb07bgnpx8at" path="res://Scenes/Components/HealthComponent.tscn" id="6_2r2xi"]
+[ext_resource type="AudioStream" uid="uid://dd1myre476gep" path="res://Asset/Audio/SFX/enemy spawn sfx.wav" id="6_jfy7i"]
+[ext_resource type="PackedScene" uid="uid://bf3ktvu4ry0y8" path="res://Scenes/Components/AttackComponent.tscn" id="7_t1sbx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kwpyw"]
+shader = ExtResource("2_syqip")
+shader_parameter/Enabled = false
+shader_parameter/tint = Color(0.996078, 0.658824, 0.372549, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ahn6x"]
+polygon = PackedVector2Array(-10, -25, 10, -25, 25, -10, 25, 10, 10, 25, -10, 25, -25, 10, -25, -10)
+
+[sub_resource type="Curve" id="Curve_o102o"]
+min_value = -50.0
+max_value = 100.0
+_data = [Vector2(0, 27.4725), 0.0, 210.0, 0, 0, Vector2(1, 85.1648), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_u2fue"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.593407), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ia0ds"]
+offsets = PackedFloat32Array(0, 0.211957, 0.532609, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Challenger" type="CharacterBody2D" groups=["enemy"]]
+light_mask = 7
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_u7hqv")
+
+[node name="Combine" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Combine"]
+self_modulate = Color(1, 1, 1, 0.0352941)
+polygon = PackedVector2Array(-11, -26, 11, -26, 26, -11, 26, 11, 11, 26, -11, 26, -26, 11, -26, -11)
+
+[node name="Damage anim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Texture")
+
+[node name="spawn" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="merge timer" type="Timer" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.15625, 1.15625)
+polygon = PackedVector2Array(-8.64865, -17.2973, -17.2973, -8.64865, -17.2973, 8.64865, -8.64865, 17.2973, 8.64865, 17.2973, 17.2973, 8.64865, 17.2973, -8.64865, 8.64865, -17.2973)
+disabled = true
+
+[node name="Texture" type="Polygon2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+material = SubResource("ShaderMaterial_kwpyw")
+color = Color(0.886275, 0.109804, 0.380392, 1)
+polygon = PackedVector2Array(-10, -25, 10, -25, 25, -10, 25, 10, 10, 25, -10, 25, -25, 10, -25, -10)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 9
+visibility_layer = 9
+occluder = SubResource("OccluderPolygon2D_ahn6x")
+occluder_light_mask = 9
+
+[node name="spawn sfx" parent="." instance=ExtResource("5_l88iv")]
+stream = ExtResource("6_jfy7i")
+max_distance = 700.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 1.0
+randomness = 0.2
+emission_shape = 2
+emission_sphere_radius = 128.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+radial_accel_min = -50.0
+radial_accel_max = -1.0
+radial_accel_curve = SubResource("Curve_o102o")
+damping_min = 28.448
+damping_max = 100.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 5.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_u2fue")
+color = Color(0.68, 0.0816, 0.29104, 1)
+color_ramp = SubResource("Gradient_ia0ds")
+hue_variation_min = -0.41
+hue_variation_max = 0.34
+
+[node name="Hitbox Component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("5_hluva")]
+collision_mask = 2
+health = NodePath("../Health Component")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox Component"]
+polygon = PackedVector2Array(-10, -20, 10, -20, 20, -10, 20, 10, 10, 20, -10, 20, -20, 10, -20, -10)
+
+[node name="Health Component" parent="." instance=ExtResource("6_2r2xi")]
+max_health = 5
+
+[node name="Attack Component" parent="." instance=ExtResource("7_t1sbx")]
+
+[connection signal="body_entered" from="Combine" to="." method="ready_to_combine"]
+[connection signal="timeout" from="spawn" to="." method="wait_timeout"]
+[connection signal="timeout" from="merge timer" to="." method="merge_ready"]
+[connection signal="die" from="Health Component" to="." method="_hp_zero"]

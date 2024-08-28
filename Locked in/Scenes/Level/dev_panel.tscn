@@ -1,0 +1,151 @@
+[gd_scene load_steps=6 format=3 uid="uid://bisi40wmwftdc"]
+
+[ext_resource type="Script" path="res://Scripts/Components' Scripts/dev_panel.gd" id="1_g355d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2l2m"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cxxm"]
+bg_color = Color(0.321728, 0.321728, 0.321728, 0.5)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38oyt"]
+bg_color = Color(0.201527, 0.201527, 0.201527, 0.5)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x3861"]
+bg_color = Color(0.321728, 0.321728, 0.321728, 0.5)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Dev panel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1030.0
+offset_bottom = -470.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_g355d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1110.0
+offset_bottom = -555.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2l2m")
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -93.5
+offset_right = 1141.0
+offset_bottom = 237.5
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(60, 17.5)
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 160
+theme_override_styles/normal = SubResource("StyleBoxFlat_1cxxm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_38oyt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1cxxm")
+text = "Spawn enemy"
+
+[node name="text0" type="Panel" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 45.0
+offset_right = 165.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x3861")
+
+[node name="text" type="Label" parent="CanvasLayer/Panel/text0"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -33.5
+offset_right = 483.0
+offset_bottom = 318.5
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(25, 17.5)
+theme_override_font_sizes/font_size = 160
+text = "value:"
+vertical_alignment = 1
+
+[node name="text1" type="Panel" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 85.0
+offset_right = 165.0
+offset_bottom = 120.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x3861")
+
+[node name="text" type="Label" parent="CanvasLayer/Panel/text1"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -33.5
+offset_right = 483.0
+offset_bottom = 318.5
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(25, 17.5)
+theme_override_font_sizes/font_size = 160
+text = "value:"
+vertical_alignment = 1
+
+[node name="text2" type="Panel" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 125.0
+offset_right = 165.0
+offset_bottom = 160.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x3861")
+
+[node name="text" type="Label" parent="CanvasLayer/Panel/text2"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -33.5
+offset_right = 483.0
+offset_bottom = 318.5
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(25, 17.5)
+theme_override_font_sizes/font_size = 160
+text = "value:"
+vertical_alignment = 1
+
+[connection signal="gui_input" from="CanvasLayer/Panel" to="." method="_on_gui_input"]
+[connection signal="mouse_exited" from="CanvasLayer/Panel" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,133 @@
+{
+	"categories": [
+		{
+			"uuid": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"title": "Task",
+			"color": "70bafa"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "a7ada0d9-d988-42e5-b493-05d40d3f46f6",
+			"title": "Todo",
+			"tasks": [
+				"17958a27-7844-4706-a77c-9939bba2d358",
+				"25f7c0d6-f8b9-42de-89a0-48d64ff2960f",
+				"0d41074b-947f-43e4-bbc7-286db4797d49",
+				"0d317863-aa14-4626-a38a-4df7a2810c65"
+			]
+		},
+		{
+			"uuid": "4e483919-cb99-45cc-8e21-f09d215c74c3",
+			"title": "Doing",
+			"tasks": [
+				"010f05c7-b239-40a5-824b-a782cd1a4b87",
+				"723d9b94-d201-495e-8af5-c884dc637b34",
+				"60812cc0-05db-42a3-8c7c-dde104c6b768"
+			]
+		},
+		{
+			"uuid": "0a4f5c17-f8d5-4b9b-b33d-d524a4e696af",
+			"title": "Perfecting",
+			"tasks": [
+				"be0a6d50-aa2c-42a5-aeda-0116574f5791",
+				"925df107-fd71-4269-85be-01ce41100ada"
+			]
+		},
+		{
+			"uuid": "81cc3c0a-0853-4166-9490-9d3e22a01ace",
+			"title": "Complete",
+			"tasks": [
+				"db371434-a1da-40fa-9287-f2877752ef12"
+			]
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "17958a27-7844-4706-a77c-9939bba2d358",
+			"title": "upgrade card",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		},
+		{
+			"uuid": "25f7c0d6-f8b9-42de-89a0-48d64ff2960f",
+			"title": "main menu",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		},
+		{
+			"uuid": "be0a6d50-aa2c-42a5-aeda-0116574f5791",
+			"title": "xp zone",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		},
+		{
+			"uuid": "db371434-a1da-40fa-9287-f2877752ef12",
+			"title": "xp ui",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		},
+		{
+			"uuid": "925df107-fd71-4269-85be-01ce41100ada",
+			"title": "dev panel",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		},
+		{
+			"uuid": "010f05c7-b239-40a5-824b-a782cd1a4b87",
+			"title": "enemy hit flash",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		},
+		{
+			"uuid": "0d41074b-947f-43e4-bbc7-286db4797d49",
+			"title": "knock back player",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		},
+		{
+			"uuid": "0d317863-aa14-4626-a38a-4df7a2810c65",
+			"title": "knock back enemy",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		},
+		{
+			"uuid": "723d9b94-d201-495e-8af5-c884dc637b34",
+			"title": "optimizing component",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		},
+		{
+			"uuid": "60812cc0-05db-42a3-8c7c-dde104c6b768",
+			"title": "implementing custom class",
+			"description": "",
+			"category": "b77c05f8-4cc5-4ccf-acbd-55f29811e58f",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"a7ada0d9-d988-42e5-b493-05d40d3f46f6"
+			],
+			[
+				"4e483919-cb99-45cc-8e21-f09d215c74c3"
+			],
+			[
+				"0a4f5c17-f8d5-4b9b-b33d-d524a4e696af"
+			],
+			[
+				"81cc3c0a-0853-4166-9490-9d3e22a01ace"
+			]
+		]
+	}
+}

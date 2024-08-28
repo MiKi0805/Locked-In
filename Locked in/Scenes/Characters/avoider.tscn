@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d0ct2wbvoabtt"]
+
+[node name="Avoider" type="CharacterBody2D" groups=["avoider"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+rotation = -1.5708
+color = Color(0.886275, 0.109804, 0.380392, 1)
+offset = Vector2(0, 5)
+polygon = PackedVector2Array(20, -15, -20, -15, -1.31134e-06, 25)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5, -15, 25, 0, -5, 15)
+
+[node name="Connector" type="Marker2D" parent="."]
+position = Vector2(20, 0)
+rotation = 0.785398
+gizmo_extents = 8.0
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+z_index = -1
+points = PackedVector2Array(20, 0, 150, 0)
+width = 0.465
+default_color = Color(1, 0, 0, 1)

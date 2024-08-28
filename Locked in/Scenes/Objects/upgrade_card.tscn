@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://cddntiw4d843a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81lj4"]
+bg_color = Color(0.413741, 0.189397, 0.367249, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.498388, 0.237224, 0.443925, 1)
+corner_radius_top_left = 50
+corner_radius_bottom_right = 50
+corner_detail = 1
+
+[node name="Upgrade card" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -210.0
+offset_right = 145.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(145, 210)
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_81lj4")
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -93.0
+offset_top = -18.0
+offset_right = 548.0
+offset_bottom = 291.0
+grow_horizontal = 2
+scale = Vector2(0.29, 0.29)
+pivot_offset = Vector2(145, 40)
+theme_override_font_sizes/font_size = 92
+text = "Light Weapon"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Goods" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -205.0
+offset_right = 646.0
+offset_bottom = 666.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.31, 0.31)
+pivot_offset = Vector2(130, 130)
+theme_override_font_sizes/font_size = 57
+text = "firerate +1
+move while firing +1
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
