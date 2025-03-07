@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://c2cuhklajgtuu"]
 
-[ext_resource type="Script" path="res://Scripts/Characters' Scripts/challenger.gd" id="1_u7hqv"]
+[ext_resource type="Script" uid="uid://r855k3826eva" path="res://Scripts/Characters' Scripts/challenger.gd" id="1_u7hqv"]
 [ext_resource type="Shader" uid="uid://dqv5odv02nd4h" path="res://Utility/blink_shader.tres" id="2_syqip"]
 [ext_resource type="PackedScene" uid="uid://baedjdrahvsqn" path="res://Scenes/Components/HitboxComponent.tscn" id="5_hluva"]
 [ext_resource type="PackedScene" uid="uid://bt7o8kk836k5b" path="res://Scenes/Objects/sfx.tscn" id="5_l88iv"]
@@ -17,8 +17,7 @@ shader_parameter/tint = Color(0.996078, 0.658824, 0.372549, 1)
 polygon = PackedVector2Array(-10, -25, 10, -25, 25, -10, 25, 10, 10, 25, -10, 25, -25, 10, -25, -10)
 
 [sub_resource type="Curve" id="Curve_o102o"]
-min_value = -50.0
-max_value = 100.0
+_limits = [-50.0, 100.0, 0.0, 1.0]
 _data = [Vector2(0, 27.4725), 0.0, 210.0, 0, 0, Vector2(1, 85.1648), 0.0, 0.0, 0, 0]
 point_count = 2
 

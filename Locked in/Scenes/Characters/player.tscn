@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://bjskf55pkd7wl"]
 
-[ext_resource type="Script" path="res://Scripts/Characters' Scripts/player.gd" id="1_ulmgi"]
+[ext_resource type="Script" uid="uid://bchpu7d2q76b4" path="res://Scripts/Characters' Scripts/player.gd" id="1_ulmgi"]
 [ext_resource type="PackedScene" uid="uid://w7tystem8ay4" path="res://Scenes/Objects/trail.tscn" id="2_f5hrv"]
-[ext_resource type="Script" path="res://Scripts/Objects' Scripts/weapons.gd" id="2_h0bmq"]
+[ext_resource type="Script" uid="uid://d0e0qjkf3nea5" path="res://Scripts/Objects' Scripts/weapons.gd" id="2_h0bmq"]
 [ext_resource type="PackedScene" uid="uid://j552kjegui3c" path="res://Scenes/Objects/player_particle.tscn" id="4_a6d0t"]
 [ext_resource type="Texture2D" uid="uid://dx0s46g6dnewc" path="res://Asset/mask.png" id="5_2alxr"]
 [ext_resource type="PackedScene" uid="uid://kb07bgnpx8at" path="res://Scenes/Components/HealthComponent.tscn" id="5_dwous"]
-[ext_resource type="Script" path="res://Scripts/Objects' Scripts/player_particle_control.gd" id="5_rwtrk"]
+[ext_resource type="Script" uid="uid://djtnghe2aiurj" path="res://Scripts/Objects' Scripts/player_particle_control.gd" id="5_rwtrk"]
 [ext_resource type="PackedScene" uid="uid://baedjdrahvsqn" path="res://Scenes/Components/HitboxComponent.tscn" id="8_de8l3"]
 
 [sub_resource type="Animation" id="Animation_r81nt"]
@@ -66,8 +66,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yet8"]
 _data = {
-"RESET": SubResource("Animation_r81nt"),
-"shoot": SubResource("Animation_5gic4")
+&"RESET": SubResource("Animation_r81nt"),
+&"shoot": SubResource("Animation_5gic4")
 }
 
 [sub_resource type="Gradient" id="Gradient_6w4jn"]

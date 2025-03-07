@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bjskf55pkd7wl" path="res://Scenes/Characters/player.tscn" id="1_dghe1"]
 [ext_resource type="PackedScene" uid="uid://bisi40wmwftdc" path="res://Scenes/Level/dev_panel.tscn" id="1_jrc0p"]
 [ext_resource type="PackedScene" uid="uid://cuquxrwahtlbq" path="res://Scenes/Objects/bullet_container.tscn" id="2_4xpmm"]
-[ext_resource type="Script" path="res://Scripts/Components' Scripts/pause.gd" id="2_ow6qs"]
+[ext_resource type="Script" uid="uid://d1vq0pxndv4al" path="res://Scripts/Components' Scripts/pause.gd" id="2_ow6qs"]
 [ext_resource type="PackedScene" uid="uid://dk63w4064apc" path="res://Scenes/Components/hostiles_spawner.tscn" id="3_mdue1"]
 [ext_resource type="PackedScene" uid="uid://cwlnr3lptmfqc" path="res://Scenes/Objects/enemy_container.tscn" id="4_7l7t4"]
 [ext_resource type="PackedScene" uid="uid://di20sk2y4setv" path="res://Scenes/Objects/camera_2d.tscn" id="7_d4lyt"]
 [ext_resource type="Environment" uid="uid://cexcqbt153vkq" path="res://Utility/World ENV/Main world env.tres" id="7_knhai"]
-[ext_resource type="Script" path="res://Scripts/Objects' Scripts/camera_2d.gd" id="8_j72so"]
-[ext_resource type="Script" path="res://Scripts/Components' Scripts/exp_ui.gd" id="10_lppr5"]
+[ext_resource type="Script" uid="uid://cgpi5gxdbxkve" path="res://Scripts/Objects' Scripts/camera_2d.gd" id="8_j72so"]
+[ext_resource type="Script" uid="uid://c3hrkg4426yse" path="res://Scripts/Components' Scripts/exp_ui.gd" id="10_lppr5"]
 
 [sub_resource type="Gradient" id="Gradient_g001s"]
 
