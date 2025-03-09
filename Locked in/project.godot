@@ -12,23 +12,25 @@ config_version=5
 
 config/name="Locked In"
 config/version="0.1.0"
-run/main_scene="res://Scenes/Level/game.tscn"
+run/main_scene="res://scenes#/level#/game.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 
 [audio]
 
-buses/default_bus_layout="res://Utility/Audio/Main_audio_bus.tres"
+buses/default_bus_layout="res://utility#/audio#/main_audio_bus#.tres"
 
 [autoload]
 
-Global="*res://Scripts/Components' Scripts/Global.gd"
-Helper="*res://Scripts/Components' Scripts/Helper.gd"
+Global="*res://scripts#/components#/global#.gd"
+Helper="*res://scripts#/components#/helper#.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
-window/stretch/mode="viewport"
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/size/transparent=true
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
@@ -95,6 +97,8 @@ common/max_physics_steps_per_frame=2
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_2d=3
 environment/defaults/default_clear_color=Color(0.219608, 0.0862745, 0.192157, 1)
+viewport/transparent_background=true
