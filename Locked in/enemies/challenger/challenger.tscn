@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://r855k3826eva" path="res://enemies/challenger/challenger.gd" id="1_ytv03"]
 [ext_resource type="PackedScene" uid="uid://bt7o8kk836k5b" path="res://audio/spawnable/sfx.tscn" id="2_dgxsw"]
-[ext_resource type="AudioStream" uid="uid://dd1myre476gep" path="res://audio/sfx#/enemy_spawn_sfx.wav" id="3_54gqo"]
-[ext_resource type="PackedScene" uid="uid://baedjdrahvsqn" path="res://components#/hitbox_component.tscn" id="4_losrt"]
-[ext_resource type="PackedScene" uid="uid://kb07bgnpx8at" path="res://components#/health_component.tscn" id="5_uaao8"]
-[ext_resource type="PackedScene" uid="uid://bf3ktvu4ry0y8" path="res://components#/attack_component.tscn" id="6_dnqdu"]
+[ext_resource type="AudioStream" uid="uid://dd1myre476gep" path="res://audio/sfx/enemy_spawn_sfx.wav" id="3_54gqo"]
+[ext_resource type="PackedScene" uid="uid://baedjdrahvsqn" path="res://components/hitbox_component.tscn" id="4_losrt"]
+[ext_resource type="PackedScene" uid="uid://kb07bgnpx8at" path="res://components/health_component.tscn" id="5_uaao8"]
+[ext_resource type="PackedScene" uid="uid://bf3ktvu4ry0y8" path="res://components/attack_component.tscn" id="6_dnqdu"]
 
 [sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_dqqya"]
 parameter_name = "tint"

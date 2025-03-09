@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://b10hh8m5vqmuj"]
 
-[ext_resource type="Script" uid="uid://dlinj00ff42ij" path="res://scripts#/objects#/xp_zone.gd" id="1_kp6es"]
+[ext_resource type="Script" uid="uid://dlinj00ff42ij" path="res://scripts/objects/xp_zone.gd" id="1_kp6es"]
 
 [sub_resource type="Animation" id="Animation_u7xbw"]
 length = 0.001

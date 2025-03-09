@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7ne0ls2swx63"]
 
-[ext_resource type="Script" uid="uid://ckjipas2gq51f" path="res://scripts#/objects#/bullet.gd" id="1_gykut"]
-[ext_resource type="PackedScene" uid="uid://w7tystem8ay4" path="res://scenes#/objects#/trail.tscn" id="2_qij33"]
-[ext_resource type="PackedScene" uid="uid://bf3ktvu4ry0y8" path="res://components#/attack_component.tscn" id="3_7wdfi"]
+[ext_resource type="Script" uid="uid://ckjipas2gq51f" path="res://scripts/objects/bullet.gd" id="1_gykut"]
+[ext_resource type="PackedScene" uid="uid://w7tystem8ay4" path="res://scenes/objects/trail.tscn" id="2_qij33"]
+[ext_resource type="PackedScene" uid="uid://bf3ktvu4ry0y8" path="res://components/attack_component.tscn" id="3_7wdfi"]
 
 [sub_resource type="Gradient" id="Gradient_6iapk"]
 offsets = PackedFloat32Array(0.266304, 0.701087)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn43oa2kgwcww"]
 
-[ext_resource type="Script" uid="uid://1jeuiy2ose8x" path="res://scripts#/objects#/enemy_hit_particle.gd" id="1_8yoiv"]
+[ext_resource type="Script" uid="uid://1jeuiy2ose8x" path="res://scripts/objects/enemy_hit_particle.gd" id="1_8yoiv"]
 
 [sub_resource type="Curve" id="Curve_tym7h"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.665094, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.406593), -3.6004, 0.0, 0, 0]

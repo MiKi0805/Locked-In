@@ -12,17 +12,17 @@ config_version=5
 
 config/name="Locked In"
 config/version="0.1.0"
-run/main_scene="res://scenes#/level#/game.tscn"
+run/main_scene="res://scenes/level/game.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
 
 [audio]
 
-buses/default_bus_layout="res://utility#/audio#/main_audio_bus#.tres"
+buses/default_bus_layout="res://utility/audio/main_audio_bus.tres"
 
 [autoload]
 
-Global="*res://scripts#/components#/global#.gd"
-Helper="*res://scripts#/components#/helper#.gd"
+Global="*res://scripts/components/global.gd"
+Helper="*res://scripts/components/helper.gd"
 
 [display]
 
