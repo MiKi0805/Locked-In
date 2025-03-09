@@ -1,3 +1,0 @@
-[gd_scene format=3 uid="uid://cuquxrwahtlbq"]
-
-[node name="Bullet container" type="Node2D" groups=["bullet_container"]]

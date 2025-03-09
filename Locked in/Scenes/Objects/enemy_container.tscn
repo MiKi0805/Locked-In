@@ -1,3 +1,0 @@
-[gd_scene format=3 uid="uid://cwlnr3lptmfqc"]
-
-[node name="Enemy container" type="Node2D" groups=["enemy_container"]]
