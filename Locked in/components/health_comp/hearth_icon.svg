@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666665 8.4666666"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   sodipodi:docname="hearth_icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="16"
+     inkscape:cx="20.53125"
+     inkscape:cy="19.09375"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     inkscape:window-x="-9"
+     inkscape:window-y="951"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="4.2333333"
+       spacingy="4.2333333"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path2"
+       style="fill:#8da5f3;fill-opacity:0;stroke-width:1.138;stroke:#8da5f3;stroke-opacity:1;stroke-dasharray:none"
+       d="m 2.8354623,0.96931299 c -0.5220713,0 -1.043901,0.20028231 -1.4439388,0.60032171 -0.78493176,0.7849312 -0.79984322,2.0390914 -0.044628,2.8418096 0.01457,0.015489 0.029482,0.030924 0.044628,0.046068 l 2.7957419,2.7957423 c 0.015156,0.015156 0.030581,0.030056 0.046068,0.044628 0.015489,-0.01457 0.030925,-0.029482 0.046068,-0.044628 L 7.0751431,4.4575123 C 7.0902987,4.4423567 7.1051989,4.4269311 7.1197713,4.411444 7.8749872,3.6087265 7.8600746,2.3545659 7.0751431,1.5696347 6.2902115,0.78470294 5.0360513,0.76979066 4.2333331,1.5250065 3.8397192,1.1546852 3.3377689,0.96931299 2.8354623,0.96931299 Z" />
+  </g>
+</svg>

@@ -30,7 +30,7 @@ window/stretch/scale_mode="integer"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/snakecaserenamer/plugin.cfg")
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
 
 [input]
 
@@ -95,4 +95,4 @@ common/max_physics_steps_per_frame=2
 
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_2d=3
-environment/defaults/default_clear_color=Color(0.219608, 0.0862745, 0.192157, 1)
+environment/defaults/default_clear_color=Color(0.101961, 0.211765, 0.211765, 1)

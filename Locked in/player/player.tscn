@@ -1,0 +1,215 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4yhdhd3b77t6"]
+
+[ext_resource type="Script" uid="uid://c2in1gkb06cb6" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://bfmtwy56mli0x" path="res://components/health_comp/health.gd" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://hykqd6jnmcyq" path="res://components/hitbox_comp/hitbox.gd" id="3_yw30f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1dw6"]
+radius = 21.0238
+
+[sub_resource type="SphereMesh" id="SphereMesh_qjkh3"]
+radius = 0.6
+height = 1.2
+
+[sub_resource type="Curve" id="Curve_g1dw6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.61994), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_yw30f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.61994), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_g1dw6"]
+target_nodepath = NodePath("../IKTargets/HandRTarget")
+tip_nodepath = NodePath("Arm1R/Arm2R/HandR")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 0
+joint_data/0/bone2d_node = NodePath("Arm1R")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = -167.341
+joint_data/0/constraint_angle_max = 22.979
+joint_data/0/constraint_angle_invert = true
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 1
+joint_data/1/bone2d_node = NodePath("Arm1R/Arm2R")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = -159.681
+joint_data/1/constraint_angle_max = 345.0
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_yw30f"]
+target_nodepath = NodePath("../IKTargets/HandLTarget")
+tip_nodepath = NodePath("Arm1L/Arm2L/HandL")
+ccdik_data_chain_length = 2
+joint_data/0/bone_index = 3
+joint_data/0/bone2d_node = NodePath("Arm1L")
+joint_data/0/rotate_from_joint = false
+joint_data/0/enable_constraint = true
+joint_data/0/constraint_angle_min = -11.868
+joint_data/0/constraint_angle_max = 170.11
+joint_data/0/constraint_angle_invert = false
+joint_data/0/constraint_in_localspace = true
+joint_data/0/editor_draw_gizmo = false
+joint_data/1/bone_index = 4
+joint_data/1/bone2d_node = NodePath("Arm1L/Arm2L")
+joint_data/1/rotate_from_joint = false
+joint_data/1/enable_constraint = true
+joint_data/1/constraint_angle_min = 14.291
+joint_data/1/constraint_angle_max = 162.198
+joint_data/1/constraint_angle_invert = false
+joint_data/1/constraint_in_localspace = true
+joint_data/1/editor_draw_gizmo = false
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_qjkh3"]
+enabled = true
+modification_count = 2
+modifications/0 = SubResource("SkeletonModification2DCCDIK_g1dw6")
+modifications/1 = SubResource("SkeletonModification2DCCDIK_yw30f")
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_oul6g")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_g1dw6")
+max_health = 5
+metadata/_custom_type_script = "uid://bfmtwy56mli0x"
+
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("3_yw30f")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://hykqd6jnmcyq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_g1dw6")
+
+[node name="Head" type="MeshInstance2D" parent="."]
+modulate = Color(0.839216, 0.741176, 0.596078, 1)
+rotation = 1.5708
+scale = Vector2(42.575, 42.575)
+mesh = SubResource("SphereMesh_qjkh3")
+
+[node name="Arms" type="Node2D" parent="Head"]
+
+[node name="ArmL" type="Line2D" parent="Head/Arms"]
+position = Vector2(-0.3, 0)
+rotation = -2.51273
+scale = Vector2(0.999983, 0.999983)
+points = PackedVector2Array(0, 0, 1, 0)
+width = 0.3
+width_curve = SubResource("Curve_g1dw6")
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="ArmR" type="Line2D" parent="Head/Arms"]
+position = Vector2(0.3, -1.13687e-13)
+rotation = -0.646824
+scale = Vector2(0.999818, 0.999818)
+points = PackedVector2Array(0, 0, 1, 0)
+width = 0.3
+width_curve = SubResource("Curve_yw30f")
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="HandL" type="Line2D" parent="Head/Arms"]
+position = Vector2(-1.09776, -0.580266)
+rotation = -0.775352
+scale = Vector2(0.999976, 0.999976)
+points = PackedVector2Array(0, 0, 1, 0)
+width = 0.2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="HandR" type="Line2D" parent="Head/Arms"]
+position = Vector2(1.08708, -0.594409)
+rotation = -2.38086
+scale = Vector2(0.999812, 0.999812)
+points = PackedVector2Array(0, 0, 1, 0)
+width = 0.2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Head"]
+modification_stack = SubResource("SkeletonModificationStack2D_qjkh3")
+
+[node name="Arm1R" type="Bone2D" parent="Head/Skeleton2D"]
+position = Vector2(0.3, -1.04805e-13)
+rotation = -0.429761
+scale = Vector2(0.999821, 0.999821)
+rest = Transform2D(0.908903, -0.416579, 0.416579, 0.908903, 0.3, -1.04805e-13)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Head/Skeleton2D/Arm1R"]
+remote_path = NodePath("../../../Arms/ArmR")
+
+[node name="Arm2R" type="Bone2D" parent="Head/Skeleton2D/Arm1R"]
+position = Vector2(0.986495, -3.8743e-07)
+rotation = -2.21504
+scale = Vector2(0.999999, 0.999999)
+rest = Transform2D(-0.600594, -0.799554, 0.799554, -0.600594, 0.986495, -3.8743e-07)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Head/Skeleton2D/Arm1R/Arm2R"]
+remote_path = NodePath("../../../../Arms/HandR")
+
+[node name="HandR" type="Bone2D" parent="Head/Skeleton2D/Arm1R/Arm2R"]
+position = Vector2(1.01325, -0.00141976)
+rest = Transform2D(1, 0, 0, 1, 1.01325, -0.00141976)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 180.0
+
+[node name="Arm1L" type="Bone2D" parent="Head/Skeleton2D"]
+position = Vector2(-0.3, 0)
+scale = Vector2(0.999999, 0.999999)
+rest = Transform2D(-0.520144, -0.854077, 0.854077, -0.520144, 0, 0)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Head/Skeleton2D/Arm1L"]
+remote_path = NodePath("../../../Arms/ArmL")
+
+[node name="Arm2L" type="Bone2D" parent="Head/Skeleton2D/Arm1L"]
+position = Vector2(0.986495, -1.78814e-07)
+rotation = 1.37976
+scale = Vector2(0.999998, 0.999998)
+rest = Transform2D(0.189878, 0.981806, -0.981806, 0.189878, 0.986495, -2.38419e-07)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Head/Skeleton2D/Arm1L/Arm2L"]
+remote_path = NodePath("../../../../Arms/HandL")
+
+[node name="HandL" type="Bone2D" parent="Head/Skeleton2D/Arm1L/Arm2L"]
+position = Vector2(1.0137, -0.00284261)
+rest = Transform2D(1, 2.98023e-08, -2.98023e-08, 1, 1.0137, -0.00284261)
+auto_calculate_length_and_angle = false
+length = 1.0
+bone_angle = 180.0
+
+[node name="IKTargets" type="Node2D" parent="Head"]
+
+[node name="HandRTarget" type="Marker2D" parent="Head/IKTargets"]
+position = Vector2(0.352315, -1.29184)
+rotation = 0.785398
+gizmo_extents = 0.5
+
+[node name="HandLTarget" type="Marker2D" parent="Head/IKTargets"]
+position = Vector2(-0.375812, -1.29184)
+rotation = -0.785398
+gizmo_extents = 0.5
