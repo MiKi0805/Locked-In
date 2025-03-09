@@ -6,4 +6,4 @@
 
 - **Organic Storytelling:** No direct exposition—only environmental clues, enemy behaviors, and hidden mechanics that players must piece together.
 
-- **Multiple Endings:** The world reacts to how the player plays, leading to different fates. Will you find the system’s core? Expand until the simulation breaks? Or become part of the endless loop? (More in[[Endings]] )
+- **Multiple Endings:** The world reacts to how the player plays, leading to different fates. Will you find the system’s core? Expand until the simulation breaks? Or become part of the endless loop? (More in [[Endings]] )
