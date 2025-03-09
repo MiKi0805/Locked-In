@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://x8yj7tjpf4e"]
+[gd_scene load_steps=3 format=3 uid="uid://x8yj7tjpf4e"]
+
+[ext_resource type="PackedScene" uid="uid://bjskf55pkd7wl" path="res://player/player.tscn" id="1_km7tq"]
+[ext_resource type="PackedScene" uid="uid://di20sk2y4setv" path="res://scenes/objects/camera_2d.tscn" id="2_pl0c8"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_km7tq")]
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("_follow") instance=ExtResource("2_pl0c8")]
+zoom = Vector2(0.4, 0.4)
+_follow = NodePath("../Player")
+weight_to_mouse = true
+follow_weight = 0.17

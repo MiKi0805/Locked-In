@@ -9,9 +9,12 @@ extends Line2D
 var queue = []
 @export var max_point : int = 10
 
+
 func _ready():
+	top_level = true
 	default_color = color
 	width = thickness
+
 
 func _process(_delta):
 	queue.push_front(follow_target())

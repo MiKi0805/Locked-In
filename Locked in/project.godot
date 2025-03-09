@@ -28,8 +28,8 @@ Helper="*res://scripts/components/helper.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
-window/size/transparent=true
+window/size/window_width_override=640
+window/size/window_height_override=360
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
@@ -97,8 +97,7 @@ common/max_physics_steps_per_frame=2
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 viewport/hdr_2d=true
 anti_aliasing/quality/msaa_2d=3
-environment/defaults/default_clear_color=Color(0.219608, 0.0862745, 0.192157, 1)
-viewport/transparent_background=true
+environment/defaults/default_clear_color=Color(0.101961, 0.211765, 0.211765, 1)
+environment/defaults/default_environment="uid://cexcqbt153vkq"

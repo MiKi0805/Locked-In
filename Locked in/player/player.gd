@@ -4,13 +4,12 @@ class_name Player
 
 #Movement
 # normal speed
-const SPEED := 350.0
+const SPEED: float = 350.0
+const ROTATE_SPEED: float = 5
 # speed while shooting
-const SHOOTING_SPEED := 100.0
+const SHOOTING_SPEED: float = 100.0
 # less value = less smoothing
-const SMOOTHING := 5
-
-@onready var animation_tree: AnimationTree = $AnimationTree
+const SMOOTHING: float = 5
 
 
 
@@ -33,14 +32,19 @@ func move(delta):
 
 # rotate to mouse position
 func rotate_to_mouse():
-	#rotation = global_position.direction_to(get_global_mouse_position()).angle()
+	var mouse_dir = global_position.direction_to(get_global_mouse_position())
+	mouse_dir = mouse_dir.normalized()
+	
+	var deg_to_mouse = atan2(mouse_dir.y, mouse_dir.x)
+	
+	rotation = lerp_angle(rotation, deg_to_mouse, ROTATE_SPEED * get_process_delta_time())
+	
 	pass
 
 
 func _process(_delta):
 	var mouse_dir = global_position.direction_to(get_global_mouse_position())
 	mouse_dir = mouse_dir.normalized()
-	animation_tree.set("parameters/blend_position", mouse_dir)
 	rotate_to_mouse()
 
 

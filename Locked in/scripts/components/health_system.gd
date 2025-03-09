@@ -8,8 +8,8 @@ var hit_count : int = 0
 
 signal die(hit_count : int)
 
-func damage(damage):
-	health -= damage
+func damage(_damage):
+	health -= _damage
 	
 	if health <= 0:
 		emit_signal("die", hit_count)
