@@ -122,8 +122,8 @@ end_cap_mode = 2
 
 [node name="ArmR" type="Line2D" parent="Head/Arms"]
 position = Vector2(0.3, -1.13687e-13)
-rotation = -0.62949
-scale = Vector2(0.999796, 0.999796)
+rotation = -0.629468
+scale = Vector2(0.99982, 0.99982)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.3
 width_curve = SubResource("Curve_yw30f")
@@ -140,9 +140,9 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="HandR" type="Line2D" parent="Head/Arms"]
-position = Vector2(1.09725, -0.580671)
-rotation = -2.36197
-scale = Vector2(0.999788, 0.999788)
+position = Vector2(1.09728, -0.580661)
+rotation = -2.36198
+scale = Vector2(0.999819, 0.999819)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.2
 begin_cap_mode = 2

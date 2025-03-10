@@ -1,6 +1,6 @@
 @icon("uid://4whm5ebkqn2j")
-extends Area2D
 class_name Hitbox
+extends Area2D
 
 
 ## Added a hitbox to the parent. Will detect a hit dealth by an 'Attack' component.

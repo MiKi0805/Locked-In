@@ -18,7 +18,7 @@ var hit_count: int = 0
 signal die(hit_count: int)
 
 
-func damage(damage):
+func deal_damage(damage):
 	health -= damage
 	
 	if health <= 0:

@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4vkg46x3v5qp"]
+[gd_scene load_steps=3 format=3 uid="uid://b4vkg46x3v5qp"]
 
 [ext_resource type="PackedScene" uid="uid://b4yhdhd3b77t6" path="res://player/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://ci0yrytbdlxkr" path="res://scenes/premade/camera/camera.gd" id="2_yqjtg"]
 
 [node name="Game" type="Node2D"]
+
+[node name="CustomCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow_target")]
+script = ExtResource("2_yqjtg")
+follow_target = NodePath("../Player")
+weight_to_mouse = true
+metadata/_custom_type_script = "uid://ci0yrytbdlxkr"
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]

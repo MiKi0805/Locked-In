@@ -7,10 +7,6 @@ const ROTATE_SPEED: float = 3
 const SHOOTING_SPEED: float = 100.0
 const SMOOTHING: float = 5
 
-@onready var hand_r_target: Marker2D = $Head/IKTargets/HandRTarget
-@onready var hand_l_target: Marker2D = $Head/IKTargets/HandLTarget
-
-
 
 func _process(delta):
 	_rotate_to_mouse(delta)
