@@ -20,7 +20,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.61994), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_g1dw6"]
-target_nodepath = NodePath("../IKTargets/HandRTarget")
+target_nodepath = NodePath("../../IKTargets/HandRTarget")
 tip_nodepath = NodePath("Arm1R/Arm2R/HandR")
 ccdik_data_chain_length = 2
 joint_data/0/bone_index = 0
@@ -43,7 +43,7 @@ joint_data/1/constraint_in_localspace = true
 joint_data/1/editor_draw_gizmo = false
 
 [sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_yw30f"]
-target_nodepath = NodePath("../IKTargets/HandLTarget")
+target_nodepath = NodePath("../../IKTargets/HandLTarget")
 tip_nodepath = NodePath("Arm1L/Arm2L/HandL")
 ccdik_data_chain_length = 2
 joint_data/0/bone_index = 3
@@ -88,6 +88,20 @@ metadata/_custom_type_script = "uid://hykqd6jnmcyq"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_g1dw6")
 
+[node name="IKTargets" type="Node2D" parent="."]
+rotation = 1.5708
+scale = Vector2(42.575, 42.575)
+
+[node name="HandRTarget" type="Marker2D" parent="IKTargets"]
+position = Vector2(0.375803, -1.29184)
+rotation = 0.785398
+gizmo_extents = 0.5
+
+[node name="HandLTarget" type="Marker2D" parent="IKTargets"]
+position = Vector2(-0.375812, -1.29184)
+rotation = -0.785398
+gizmo_extents = 0.5
+
 [node name="Head" type="MeshInstance2D" parent="."]
 modulate = Color(0.839216, 0.741176, 0.596078, 1)
 rotation = 1.5708
@@ -108,8 +122,8 @@ end_cap_mode = 2
 
 [node name="ArmR" type="Line2D" parent="Head/Arms"]
 position = Vector2(0.3, -1.13687e-13)
-rotation = -0.64682
-scale = Vector2(0.999818, 0.999818)
+rotation = -0.62949
+scale = Vector2(0.999796, 0.999796)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.3
 width_curve = SubResource("Curve_yw30f")
@@ -126,9 +140,9 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="HandR" type="Line2D" parent="Head/Arms"]
-position = Vector2(1.08708, -0.594405)
-rotation = -2.38086
-scale = Vector2(0.999816, 0.999816)
+position = Vector2(1.09725, -0.580671)
+rotation = -2.36197
+scale = Vector2(0.999788, 0.999788)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.2
 begin_cap_mode = 2
@@ -201,15 +215,3 @@ rest = Transform2D(1, 2.98023e-08, -2.98023e-08, 1, 1.0137, -0.00284261)
 auto_calculate_length_and_angle = false
 length = 1.0
 bone_angle = 180.0
-
-[node name="IKTargets" type="Node2D" parent="Head"]
-
-[node name="HandRTarget" type="Marker2D" parent="Head/IKTargets"]
-position = Vector2(0.352315, -1.29184)
-rotation = 0.785398
-gizmo_extents = 0.5
-
-[node name="HandLTarget" type="Marker2D" parent="Head/IKTargets"]
-position = Vector2(-0.375812, -1.29184)
-rotation = -0.785398
-gizmo_extents = 0.5
