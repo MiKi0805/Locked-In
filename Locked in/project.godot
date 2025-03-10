@@ -19,6 +19,10 @@ config/features=PackedStringArray("4.4", "Mobile")
 
 buses/default_bus_layout="res://Utility/Audio/Main_audio_bus.tres"
 
+[autoload]
+
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
+
 [display]
 
 window/size/viewport_width=1920

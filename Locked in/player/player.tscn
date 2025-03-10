@@ -98,8 +98,8 @@ mesh = SubResource("SphereMesh_qjkh3")
 
 [node name="ArmL" type="Line2D" parent="Head/Arms"]
 position = Vector2(-0.3, 0)
-rotation = -2.51273
-scale = Vector2(0.999983, 0.999983)
+rotation = -2.51275
+scale = Vector2(0.999997, 0.999997)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.3
 width_curve = SubResource("Curve_g1dw6")
@@ -108,7 +108,7 @@ end_cap_mode = 2
 
 [node name="ArmR" type="Line2D" parent="Head/Arms"]
 position = Vector2(0.3, -1.13687e-13)
-rotation = -0.646824
+rotation = -0.64682
 scale = Vector2(0.999818, 0.999818)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.3
@@ -117,18 +117,18 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="HandL" type="Line2D" parent="Head/Arms"]
-position = Vector2(-1.09776, -0.580266)
-rotation = -0.775352
-scale = Vector2(0.999976, 0.999976)
+position = Vector2(-1.09779, -0.580263)
+rotation = -0.775342
+scale = Vector2(0.999995, 0.999995)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="HandR" type="Line2D" parent="Head/Arms"]
-position = Vector2(1.08708, -0.594409)
+position = Vector2(1.08708, -0.594405)
 rotation = -2.38086
-scale = Vector2(0.999812, 0.999812)
+scale = Vector2(0.999816, 0.999816)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.2
 begin_cap_mode = 2

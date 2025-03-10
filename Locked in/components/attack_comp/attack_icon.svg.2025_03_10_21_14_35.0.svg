@@ -24,14 +24,14 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="23.860606"
-     inkscape:cx="16.030607"
-     inkscape:cy="17.120269"
+     inkscape:cx="16.323978"
+     inkscape:cy="18.293752"
      inkscape:window-width="1920"
      inkscape:window-height="1051"
      inkscape:window-x="-9"
      inkscape:window-y="951"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer2"
+     inkscape:current-layer="layer1"
      showgrid="true">
     <inkscape:grid
        id="grid1"
@@ -53,6 +53,10 @@
   <defs
      id="defs1" />
   <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2" />
+  <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
@@ -61,17 +65,5 @@
        id="path3"
        style="fill:#8da5f3;fill-rule:evenodd;stroke:#8da5f3;stroke-width:0"
        d="m 1.1012248,1.1012248 v 1.1942424 l 3.039091,3.0390909 0.01602,-0.01602 1.1622029,-1.1622029 0.01602,-0.01602 -3.0390909,-3.039091 z m 4.7723185,2.975529 -0.015503,0.015503 -1.7657837,1.7657837 -0.015503,0.015503 0.5193481,0.5193482 0.015503,-0.015503 1.7657837,-1.7657837 0.015503,-0.015503 z m 0.1705322,1.2681396 -0.0093,0.0093 -0.6805786,0.6805786 -0.0093,0.0093 1.3208496,1.3213664 0.6092652,-0.090434 0.090434,-0.6092652 z" />
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Layer 2">
-    <path
-       id="path1"
-       style="fill:#aec0ef;fill-opacity:1;fill-rule:evenodd;stroke:#8da5f3;stroke-width:0.364501;stroke-linecap:square;stroke-miterlimit:6.1;stroke-dasharray:none;paint-order:normal"
-       inkscape:transform-center-x="-0.02691216"
-       inkscape:transform-center-y="-1.6147319"
-       d="M 5.1839142,1.2033968 3.8677559,2.8493502 1.8514973,1.1799659 2.7200349,3.3379198 1.3058738,3.9046596 2.9642227,4.19934 1.8408168,6.4155394 3.6781479,5.3033741 4.9739074,7.1209419 4.9676484,5.0400285 6.9566565,5.0806939 5.3384679,4.0234963 6.7729882,3.0923413 4.9155888,3.2382513 Z"
-       sodipodi:nodetypes="ccccccccccccccc" />
   </g>
 </svg>
