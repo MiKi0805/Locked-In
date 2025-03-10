@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhq5w0tkghekm"]
+
+[ext_resource type="Script" uid="uid://rnips443ys42" path="res://enemies/challenger/challenger.gd" id="1_juc08"]
+
+[node name="Challenger" type="CharacterBody2D"]
+script = ExtResource("1_juc08")
