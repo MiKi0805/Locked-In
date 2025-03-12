@@ -8,4 +8,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	#velocity = global_position.direction_to(get_tree().get_first_node_in_group("player").global_position) * 5 * delta
+	
+	move_and_slide()

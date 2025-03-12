@@ -1,8 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4yhdhd3b77t6"]
+[gd_scene load_steps=13 format=3 uid="uid://b4yhdhd3b77t6"]
 
 [ext_resource type="Script" uid="uid://c2in1gkb06cb6" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://bfmtwy56mli0x" path="res://components/health_comp/health.gd" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://hykqd6jnmcyq" path="res://components/hitbox_comp/hitbox.gd" id="3_yw30f"]
+[ext_resource type="Script" uid="uid://b5mpr7167y88" path="res://player/ik_controller.gd" id="4_yw30f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yw30f"]
+radius = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1dw6"]
 radius = 21.0238
@@ -71,9 +75,12 @@ modification_count = 2
 modifications/0 = SubResource("SkeletonModification2DCCDIK_g1dw6")
 modifications/1 = SubResource("SkeletonModification2DCCDIK_yw30f")
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_oul6g")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yw30f")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_g1dw6")
@@ -91,14 +98,15 @@ shape = SubResource("CircleShape2D_g1dw6")
 [node name="IKTargets" type="Node2D" parent="."]
 rotation = 1.5708
 scale = Vector2(42.575, 42.575)
+script = ExtResource("4_yw30f")
 
 [node name="HandRTarget" type="Marker2D" parent="IKTargets"]
-position = Vector2(0.375803, -1.29184)
+position = Vector2(0.375803, -1.22138)
 rotation = 0.785398
 gizmo_extents = 0.5
 
 [node name="HandLTarget" type="Marker2D" parent="IKTargets"]
-position = Vector2(-0.375812, -1.29184)
+position = Vector2(-0.375812, -1.22137)
 rotation = -0.785398
 gizmo_extents = 0.5
 
@@ -112,8 +120,8 @@ mesh = SubResource("SphereMesh_qjkh3")
 
 [node name="ArmL" type="Line2D" parent="Head/Arms"]
 position = Vector2(-0.3, 0)
-rotation = -2.51275
-scale = Vector2(0.999997, 0.999997)
+rotation = -2.56296
+scale = Vector2(0.999999, 0.999999)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.3
 width_curve = SubResource("Curve_g1dw6")
@@ -122,7 +130,7 @@ end_cap_mode = 2
 
 [node name="ArmR" type="Line2D" parent="Head/Arms"]
 position = Vector2(0.3, -1.13687e-13)
-rotation = -0.629468
+rotation = -0.579264
 scale = Vector2(0.99982, 0.99982)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.3
@@ -131,17 +139,17 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="HandL" type="Line2D" parent="Head/Arms"]
-position = Vector2(-1.09779, -0.580263)
-rotation = -0.775342
-scale = Vector2(0.999995, 0.999995)
+position = Vector2(-1.1259, -0.539496)
+rotation = -0.734991
+scale = Vector2(0.999996, 0.999996)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.2
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="HandR" type="Line2D" parent="Head/Arms"]
-position = Vector2(1.09728, -0.580661)
-rotation = -2.36198
+position = Vector2(1.12541, -0.539919)
+rotation = -2.40238
 scale = Vector2(0.999819, 0.999819)
 points = PackedVector2Array(0, 0, 1, 0)
 width = 0.2
