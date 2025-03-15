@@ -76,8 +76,12 @@ modifications/0 = SubResource("SkeletonModification2DCCDIK_g1dw6")
 modifications/1 = SubResource("SkeletonModification2DCCDIK_yw30f")
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_mask = 32
 motion_mode = 1
 script = ExtResource("1_oul6g")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yw30f")
