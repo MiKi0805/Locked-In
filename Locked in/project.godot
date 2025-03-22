@@ -13,7 +13,6 @@ config_version=5
 config/name="Locked In"
 config/version="0.1.0"
 config/tags=PackedStringArray("big_project")
-run/main_scene="uid://b4vkg46x3v5qp"
 config/features=PackedStringArray("4.4", "Mobile")
 
 [audio]
@@ -23,6 +22,8 @@ driver/output_latency=10
 
 [autoload]
 
+Global="*res://Scripts/Components' Scripts/Global.gd"
+Helper="*res://Scripts/Components' Scripts/Helper.gd"
 Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 SignalBus="*res://scripts/signal_bus.gd"
 
