@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://f7ae34kkjiku"]
+[gd_scene load_steps=6 format=3 uid="uid://dxl7voy8mn0nx"]
 
-[ext_resource type="Script" uid="uid://duoy8c84jjanx" path="res://items/weapons/weapon.gd" id="1_1aasx"]
+[ext_resource type="Script" uid="uid://dw1dbuj7anpo2" path="res://items/weapons/weapon.gd" id="1_mmnw1"]
+[ext_resource type="Script" uid="uid://huomir55112x" path="res://bullets/bullet_data.gd" id="2_fqqk5"]
+[ext_resource type="Script" uid="uid://h6kh51dvwpex" path="res://items/weapons/weapon_stats.gd" id="3_yteyy"]
+
+[sub_resource type="Resource" id="Resource_fqqk5"]
+script = ExtResource("2_fqqk5")
+damage = -1
+speed = -1
+metadata/_custom_type_script = "uid://huomir55112x"
+
+[sub_resource type="Resource" id="Resource_3adji"]
+script = ExtResource("3_yteyy")
+spread = 0.0
+bullet_data = SubResource("Resource_fqqk5")
+metadata/_custom_type_script = "uid://h6kh51dvwpex"
 
 [node name="Weapon" type="Node2D"]
-script = ExtResource("1_1aasx")
+script = ExtResource("1_mmnw1")
+weapon_stats = SubResource("Resource_3adji")

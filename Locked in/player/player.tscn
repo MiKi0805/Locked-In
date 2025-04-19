@@ -1,0 +1,129 @@
+[gd_scene load_steps=23 format=3 uid="uid://duoounwq2ca6q"]
+
+[ext_resource type="Script" uid="uid://ceup1aq054m28" path="res://player/player.gd" id="1_g1dw6"]
+[ext_resource type="Shader" uid="uid://bfqxrdo8sghbt" path="res://shaders/dropshadow.gdshader" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://g5ttxe2p08qo" path="res://player/player_fsm/player_sm.gd" id="3_g6k8r"]
+[ext_resource type="Script" uid="uid://d2atddylicak5" path="res://player/states/movement/normal_walk.gd" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://g206isblp77y" path="res://player/states/movement/idle.gd" id="5_g6k8r"]
+[ext_resource type="Script" uid="uid://2spki7q2nxdd" path="res://player/states/movement/knockback.gd" id="6_32hag"]
+[ext_resource type="PackedScene" uid="uid://kibl6kisyjtj" path="res://debug_tools/state_debugger/state_debugger.tscn" id="7_boad6"]
+[ext_resource type="Script" uid="uid://hykqd6jnmcyq" path="res://systems/components/hitbox_comp/hitbox.gd" id="7_rgyib"]
+[ext_resource type="Script" uid="uid://bfmtwy56mli0x" path="res://systems/components/health_comp/health.gd" id="8_hg6s5"]
+[ext_resource type="Script" uid="uid://dw1dbuj7anpo2" path="res://items/weapons/weapon.gd" id="9_hg6s5"]
+[ext_resource type="PackedScene" uid="uid://bwy0hv6keepvm" path="res://bullets/bullet.tscn" id="10_ebec5"]
+[ext_resource type="Script" uid="uid://huomir55112x" path="res://bullets/bullet_data.gd" id="11_yllr7"]
+[ext_resource type="Script" uid="uid://h6kh51dvwpex" path="res://items/weapons/weapon_stats.gd" id="12_kb6p2"]
+[ext_resource type="Script" uid="uid://brufk71lhde8v" path="res://items/weapons/fire_mode/shotgun_fire_mode.gd" id="13_yllr7"]
+[ext_resource type="Script" uid="uid://nr6lmejcuktr" path="res://items/weapons/fire_mode/basic_fire_mode.gd" id="14_kb6p2"]
+[ext_resource type="AudioStream" uid="uid://cpivdyh8mqefr" path="res://audios/preset_sfx/heavy_shot_sfx.tres" id="15_e7oew"]
+[ext_resource type="Script" uid="uid://ls35krkfwksa" path="res://systems/components/cooldown.gd" id="15_wodsf"]
+[ext_resource type="AudioStream" uid="uid://dhsv66j00abuu" path="res://audios/preset_sfx/light_shot_sfx.tres" id="17_c35mf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
+size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oul6g"]
+shader = ExtResource("1_oul6g")
+shader_parameter/shadow_offset = Vector2(2, 2)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
+
+[sub_resource type="Resource" id="Resource_wodsf"]
+script = ExtResource("11_yllr7")
+damage = 10
+speed = 200
+bullet_scene = ExtResource("10_ebec5")
+metadata/_custom_type_script = "uid://huomir55112x"
+
+[sub_resource type="Resource" id="Resource_32hag"]
+script = ExtResource("12_kb6p2")
+spread = 20.0
+bullet_data = SubResource("Resource_wodsf")
+metadata/_custom_type_script = "uid://h6kh51dvwpex"
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_g1dw6")
+speed = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rkbax")
+debug_color = Color(0, 0.6, 0.701961, 0.294118)
+
+[node name="MainSprite" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8, 4, 4, -4, 4, -4, -4, 4, -4, 4, 4, 8, 8)
+
+[node name="DropShadow" type="Polygon2D" parent="MainSprite"]
+z_index = -1
+material = SubResource("ShaderMaterial_oul6g")
+polygon = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8, 4, 4, -4, 4, -4, -4, 4, -4, 4, 4, 8, 8)
+
+[node name="MovementSM" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_g6k8r")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node2D" parent="MovementSM" node_paths=PackedStringArray("player")]
+script = ExtResource("5_g6k8r")
+player = NodePath("../..")
+
+[node name="NormalWalk" type="Node2D" parent="MovementSM" node_paths=PackedStringArray("player")]
+script = ExtResource("4_yw30f")
+player = NodePath("../..")
+
+[node name="Knockback" type="Node2D" parent="MovementSM" node_paths=PackedStringArray("weapon", "player")]
+script = ExtResource("6_32hag")
+weapon = NodePath("../../Weapon")
+knockback_duration = 0.02
+player = NodePath("../..")
+
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+script = ExtResource("7_rgyib")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://hykqd6jnmcyq"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_rkbax")
+debug_color = Color(0, 0.6, 0.701961, 0.294118)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("8_hg6s5")
+metadata/_custom_type_script = "uid://bfmtwy56mli0x"
+
+[node name="StateDebugger" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("7_boad6")]
+state_machine = NodePath("../MovementSM")
+pre_state_info = ""
+offset = Vector2(0, -18.895)
+
+[node name="Weapon" type="Node2D" parent="." node_paths=PackedStringArray("muzzle", "fire_mode")]
+script = ExtResource("9_hg6s5")
+weapon_stats = SubResource("Resource_32hag")
+muzzle = NodePath("Marker2D")
+fire_mode = NodePath("ShotgunFireMode")
+metadata/_custom_type_script = "uid://dw1dbuj7anpo2"
+
+[node name="Marker2D" type="Marker2D" parent="Weapon"]
+position = Vector2(12, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="Weapon"]
+polygon = PackedVector2Array(12, -4, 16, -4, 16, 4, 12, 4)
+
+[node name="ShotgunFireMode" type="Node" parent="Weapon" node_paths=PackedStringArray("cooldown")]
+script = ExtResource("13_yllr7")
+fire_rate = 5.0
+cooldown = NodePath("../Cooldown")
+knockback = 60.0
+shot_sfx = ExtResource("15_e7oew")
+metadata/_custom_type_script = "uid://brufk71lhde8v"
+
+[node name="BasicFireMode" type="Node" parent="Weapon" node_paths=PackedStringArray("cooldown")]
+script = ExtResource("14_kb6p2")
+fire_rate = 10.0
+cooldown = NodePath("../Cooldown")
+knockback = 20.0
+shot_sfx = ExtResource("17_c35mf")
+metadata/_custom_type_script = "uid://nr6lmejcuktr"
+
+[node name="Cooldown" type="Node" parent="Weapon"]
+script = ExtResource("15_wodsf")
+metadata/_custom_type_script = "uid://ls35krkfwksa"
+
+[connection signal="weapon_shot" from="Weapon" to="MovementSM" method="_on_weapon_shot"]

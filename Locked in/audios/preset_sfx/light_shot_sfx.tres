@@ -1,0 +1,7 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://dhsv66j00abuu"]
+
+[ext_resource type="AudioStream" uid="uid://7jfx8nyodhoi" path="res://audios/sfx/light_shot.wav" id="1_4k32v"]
+
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("1_4k32v")
