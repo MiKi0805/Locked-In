@@ -1,8 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://i2sis51kc0ci"]
+[gd_scene load_steps=8 format=3 uid="uid://i2sis51kc0ci"]
 
-[ext_resource type="PackedScene" uid="uid://duoounwq2ca6q" path="res://player/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://dh10huvkhc06i" path="res://hostile/enemies/1/enemy_1.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://duoounwq2ca6q" path="res://player/player.tscn" id="3_lnu2h"]
+
+[sub_resource type="Gradient" id="Gradient_uwrxv"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.254032)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yqjtg"]
+noise_type = 3
+frequency = 0.0824
+fractal_octaves = 2
+fractal_lacunarity = 11.685
+fractal_gain = 0.4
+fractal_weighted_strength = 0.31
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lnu2h"]
+noise = SubResource("FastNoiseLite_yqjtg")
+color_ramp = SubResource("Gradient_uwrxv")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_yqjtg"]
+offsets = PackedFloat32Array(0, 0.1, 0.9, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Environment" id="Environment_uwrxv"]
+background_mode = 3
+glow_enabled = true
+glow_levels/3 = 4.29
+glow_levels/5 = 0.0
+glow_bloom = 0.04
+glow_blend_mode = 0
 
 [node name="Game" type="Node2D"]
-position = Vector2(118, 85)
 
-[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+[node name="ENV" type="Node2D" parent="."]
+
+[node name="GroundMark" type="CPUParticles2D" parent="ENV"]
+modulate = Color(1, 1, 1, 0.0784314)
+z_index = -10
+z_as_relative = false
+amount = 10
+texture = SubResource("NoiseTexture2D_lnu2h")
+lifetime = 10.0
+preprocess = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(10, 10)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 1.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_yqjtg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="ENV"]
+environment = SubResource("Environment_uwrxv")
+
+[node name="Player" parent="." instance=ExtResource("3_lnu2h")]
+
+[node name="Enemy1" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(112, -16)

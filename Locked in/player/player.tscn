@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://duoounwq2ca6q"]
+[gd_scene load_steps=29 format=3 uid="uid://duoounwq2ca6q"]
 
 [ext_resource type="Script" uid="uid://ceup1aq054m28" path="res://player/player.gd" id="1_g1dw6"]
 [ext_resource type="Shader" uid="uid://bfqxrdo8sghbt" path="res://shaders/dropshadow.gdshader" id="1_oul6g"]
@@ -15,9 +15,11 @@
 [ext_resource type="Script" uid="uid://h6kh51dvwpex" path="res://items/weapons/weapon_stats.gd" id="12_kb6p2"]
 [ext_resource type="Script" uid="uid://brufk71lhde8v" path="res://items/weapons/fire_mode/shotgun_fire_mode.gd" id="13_yllr7"]
 [ext_resource type="Script" uid="uid://nr6lmejcuktr" path="res://items/weapons/fire_mode/basic_fire_mode.gd" id="14_kb6p2"]
+[ext_resource type="Script" uid="uid://bbe1ho5vpeala" path="res://items/weapons/fire_mode_stats.gd" id="15_c35mf"]
 [ext_resource type="AudioStream" uid="uid://cpivdyh8mqefr" path="res://audios/preset_sfx/heavy_shot_sfx.tres" id="15_e7oew"]
 [ext_resource type="Script" uid="uid://ls35krkfwksa" path="res://systems/components/cooldown.gd" id="15_wodsf"]
 [ext_resource type="AudioStream" uid="uid://dhsv66j00abuu" path="res://audios/preset_sfx/light_shot_sfx.tres" id="17_c35mf"]
+[ext_resource type="PackedScene" uid="uid://454s6erdf2rl" path="res://scenes/premade/camera/camera.tscn" id="19_c35mf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rkbax"]
 size = Vector2(16, 16)
@@ -27,35 +29,65 @@ shader = ExtResource("1_oul6g")
 shader_parameter/shadow_offset = Vector2(2, 2)
 shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
 
-[sub_resource type="Resource" id="Resource_wodsf"]
+[sub_resource type="Resource" id="Resource_c35mf"]
 script = ExtResource("11_yllr7")
 damage = 10
-speed = 200
+speed = 500.0
 bullet_scene = ExtResource("10_ebec5")
 metadata/_custom_type_script = "uid://huomir55112x"
 
-[sub_resource type="Resource" id="Resource_32hag"]
+[sub_resource type="Resource" id="Resource_65viv"]
 script = ExtResource("12_kb6p2")
-spread = 20.0
-bullet_data = SubResource("Resource_wodsf")
+spread = 10.0
+bullet_data = SubResource("Resource_c35mf")
 metadata/_custom_type_script = "uid://h6kh51dvwpex"
+
+[sub_resource type="Resource" id="Resource_x7c3f"]
+script = ExtResource("15_c35mf")
+knockback = 50.0
+shot_sfx = ExtResource("15_e7oew")
+metadata/_custom_type_script = "uid://bbe1ho5vpeala"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7oew"]
+shader = ExtResource("1_oul6g")
+shader_parameter/shadow_offset = Vector2(1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 0.3)
+
+[sub_resource type="Resource" id="Resource_s7qer"]
+script = ExtResource("12_kb6p2")
+spread = 5.0
+bullet_data = SubResource("Resource_c35mf")
+metadata/_custom_type_script = "uid://h6kh51dvwpex"
+
+[sub_resource type="Resource" id="Resource_bjvpn"]
+script = ExtResource("15_c35mf")
+knockback = 5.0
+shot_sfx = ExtResource("17_c35mf")
+metadata/_custom_type_script = "uid://bbe1ho5vpeala"
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_g1dw6")
-speed = 100.0
+speed = 50.0
+deceleration = 7.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rkbax")
 debug_color = Color(0, 0.6, 0.701961, 0.294118)
 
 [node name="MainSprite" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8, 4, 4, -4, 4, -4, -4, 4, -4, 4, 4, 8, 8)
+polygon = PackedVector2Array(8, -8, -8, -8, -8, -6, -8, -4, -8, -2, -8, -0.0678844, -8, 2, -8, 4, -8, 6, -8, 8, 8, 8, 8, 8)
+uv = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8, 8, 8)
 
 [node name="DropShadow" type="Polygon2D" parent="MainSprite"]
 z_index = -1
 material = SubResource("ShaderMaterial_oul6g")
-polygon = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8, 4, 4, -4, 4, -4, -4, 4, -4, 4, 4, 8, 8)
+polygon = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8, 8, 8)
+
+[node name="Hand" type="Polygon2D" parent="MainSprite"]
+z_index = -1
+color = Color(0.687214, 0.687215, 0.687215, 1)
+polygon = PackedVector2Array(-2, -12, 2, -12, 2, 12, -2, 12)
 
 [node name="MovementSM" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_g6k8r")
@@ -69,10 +101,10 @@ player = NodePath("../..")
 script = ExtResource("4_yw30f")
 player = NodePath("../..")
 
-[node name="Knockback" type="Node2D" parent="MovementSM" node_paths=PackedStringArray("weapon", "player")]
+[node name="Knockback" type="Node2D" parent="MovementSM" node_paths=PackedStringArray("effectors", "player")]
 script = ExtResource("6_32hag")
-weapon = NodePath("../../Weapon")
-knockback_duration = 0.02
+effectors = [NodePath("../../Shotgun/ShotgunFireMode"), NodePath("../../SMG/BasicFireMode")]
+knockback_duration = 0.05
 player = NodePath("../..")
 
 [node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
@@ -89,41 +121,91 @@ script = ExtResource("8_hg6s5")
 metadata/_custom_type_script = "uid://bfmtwy56mli0x"
 
 [node name="StateDebugger" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("7_boad6")]
+visible = false
 state_machine = NodePath("../MovementSM")
-pre_state_info = ""
-offset = Vector2(0, -18.895)
+pre_state_info = "State: "
+offset = Vector2(0, -20)
 
-[node name="Weapon" type="Node2D" parent="." node_paths=PackedStringArray("muzzle", "fire_mode")]
+[node name="Shotgun" type="Node2D" parent="." node_paths=PackedStringArray("muzzle", "fire_mode")]
+position = Vector2(0, -12)
 script = ExtResource("9_hg6s5")
-weapon_stats = SubResource("Resource_32hag")
+weapon_stats = SubResource("Resource_65viv")
 muzzle = NodePath("Marker2D")
 fire_mode = NodePath("ShotgunFireMode")
+shoot_mode = 1
 metadata/_custom_type_script = "uid://dw1dbuj7anpo2"
 
-[node name="Marker2D" type="Marker2D" parent="Weapon"]
-position = Vector2(12, 0)
-
-[node name="Polygon2D" type="Polygon2D" parent="Weapon"]
-polygon = PackedVector2Array(12, -4, 16, -4, 16, 4, 12, 4)
-
-[node name="ShotgunFireMode" type="Node" parent="Weapon" node_paths=PackedStringArray("cooldown")]
+[node name="ShotgunFireMode" type="Node" parent="Shotgun" node_paths=PackedStringArray("cooldown")]
 script = ExtResource("13_yllr7")
-fire_rate = 5.0
+fire_rate = 2.0
 cooldown = NodePath("../Cooldown")
-knockback = 60.0
-shot_sfx = ExtResource("15_e7oew")
+stats = SubResource("Resource_x7c3f")
 metadata/_custom_type_script = "uid://brufk71lhde8v"
 
-[node name="BasicFireMode" type="Node" parent="Weapon" node_paths=PackedStringArray("cooldown")]
-script = ExtResource("14_kb6p2")
-fire_rate = 10.0
-cooldown = NodePath("../Cooldown")
-knockback = 20.0
-shot_sfx = ExtResource("17_c35mf")
-metadata/_custom_type_script = "uid://nr6lmejcuktr"
-
-[node name="Cooldown" type="Node" parent="Weapon"]
+[node name="Cooldown" type="Node" parent="Shotgun"]
 script = ExtResource("15_wodsf")
 metadata/_custom_type_script = "uid://ls35krkfwksa"
 
-[connection signal="weapon_shot" from="Weapon" to="MovementSM" method="_on_weapon_shot"]
+[node name="Marker2D" type="Marker2D" parent="Shotgun"]
+position = Vector2(4, 0)
+
+[node name="Sight" type="Line2D" parent="Shotgun"]
+points = PackedVector2Array(0, 0, 383, 0)
+width = 0.2
+default_color = Color(1, 0, 0, 1)
+
+[node name="Shotgun" type="Polygon2D" parent="Shotgun"]
+rotation = -1.5708
+offset = Vector2(-14, -6.11959e-07)
+polygon = PackedVector2Array(12, -4, 16, -4, 16, 6, 14, 4, 12, 6)
+
+[node name="DropShadow" type="Polygon2D" parent="Shotgun/Shotgun"]
+z_index = -1
+material = SubResource("ShaderMaterial_e7oew")
+offset = Vector2(-14, 0.0624994)
+polygon = PackedVector2Array(12, -4, 16, -4, 16, 6, 14, 4, 12, 6)
+
+[node name="SMG" type="Node2D" parent="." node_paths=PackedStringArray("muzzle", "fire_mode")]
+position = Vector2(0, 12)
+script = ExtResource("9_hg6s5")
+weapon_stats = SubResource("Resource_s7qer")
+muzzle = NodePath("Marker2D")
+fire_mode = NodePath("BasicFireMode")
+metadata/_custom_type_script = "uid://dw1dbuj7anpo2"
+
+[node name="BasicFireMode" type="Node" parent="SMG" node_paths=PackedStringArray("cooldown")]
+script = ExtResource("14_kb6p2")
+fire_rate = 20.0
+cooldown = NodePath("../Cooldown")
+stats = SubResource("Resource_bjvpn")
+metadata/_custom_type_script = "uid://nr6lmejcuktr"
+
+[node name="Cooldown" type="Node" parent="SMG"]
+script = ExtResource("15_wodsf")
+metadata/_custom_type_script = "uid://ls35krkfwksa"
+
+[node name="Marker2D" type="Marker2D" parent="SMG"]
+position = Vector2(4, 0)
+
+[node name="Sight" type="Line2D" parent="SMG"]
+points = PackedVector2Array(0, 0, 383, 0)
+width = 0.2
+default_color = Color(1, 0, 0, 1)
+
+[node name="Minigun" type="Polygon2D" parent="SMG"]
+rotation = -1.5708
+offset = Vector2(-14, -6.11959e-07)
+polygon = PackedVector2Array(12, -4, 16, -4, 16, 6, 14, 4, 12, 6)
+
+[node name="DropShadow" type="Polygon2D" parent="SMG/Minigun"]
+z_index = -1
+material = SubResource("ShaderMaterial_e7oew")
+offset = Vector2(-14, 0.0624994)
+polygon = PackedVector2Array(12, -4, 16, -4, 16, 6, 14, 4, 12, 6)
+
+[node name="Camera" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("19_c35mf")]
+top_level = true
+zoom = Vector2(1.5, 1.5)
+follow_target = NodePath("..")
+speed = 3.0
+weight_to_mouse = true

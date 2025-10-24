@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh10huvkhc06i"]
+
+[ext_resource type="Script" uid="uid://bfmtwy56mli0x" path="res://systems/components/health_comp/health.gd" id="1_hu0gu"]
+[ext_resource type="Script" uid="uid://hykqd6jnmcyq" path="res://systems/components/hitbox_comp/hitbox.gd" id="2_lvn2j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hu0gu"]
+size = Vector2(16, 16)
+
+[node name="Enemy1" type="CharacterBody2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("1_hu0gu")
+max_health = 100
+debug_kill = true
+metadata/_custom_type_script = "uid://bfmtwy56mli0x"
+
+[node name="Hitbox" type="Area2D" parent="." node_paths=PackedStringArray("health")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_lvn2j")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://hykqd6jnmcyq"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_hu0gu")

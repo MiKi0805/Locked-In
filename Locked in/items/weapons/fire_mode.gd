@@ -1,12 +1,17 @@
-class_name FireMode
+@abstract class_name FireMode
 extends Node
 
 
-@export var knockback: float = 10
-@export var shot_sfx: AudioStream
+signal on_shot(fire_mode_stats: FireModeStats)
+
+@export var stats: FireModeStats
 
 var weapon_stats: WeaponStats
 var weapon: Weapon
+
+
+func _emit_on_shot():
+	on_shot.emit(stats)
 
 
 func triggered():

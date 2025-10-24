@@ -7,10 +7,9 @@ extends Resource
 @export var damage: int = -1
 ## The speed that the bullet will travel with.
 ## Will use bullet default speed, if variable set to -1.
-@export var speed: int = -1
+@export var speed: float = -1
 ## Bullet scene that will be use for what bullet to spawn.
 @export var bullet_scene: PackedScene
-@export var shot_sfx: AudioStreamRandomizer
 
 # Bullet Transform
 var direction: Vector2

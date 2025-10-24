@@ -36,11 +36,7 @@ func _physics_process(delta):
 
 
 # Change to different state
-func on_child_transition(state, new_state_name):
-	# Setup to change state
-	if state != current_state:
-		return
-	
+func on_child_transition(new_state_name):
 	var new_state = states.get(new_state_name.to_snake_case())
 	
 	if !new_state:

@@ -9,6 +9,6 @@ extends FireMode
 
 func triggered():
 	if cooldown.is_ready():
-		weapon.weapon_stats.recoil_knockback = knockback
 		weapon.shoot()
+		_emit_on_shot()
 		cooldown.trigger(1 / fire_rate)

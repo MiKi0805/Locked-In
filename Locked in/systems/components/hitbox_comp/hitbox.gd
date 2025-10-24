@@ -8,9 +8,17 @@ extends Area2D
 @export var health: Health
 
 
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+	area_entered.connect(_on_body_entered)
+
+
 func _on_body_entered(body):
-	var attack_component = body.get_node_or_null("Attack Component")
+	if Global.debug_mode:
+		print(self, " | Body: " , body)
+	
+	var attack_component = body.get_node_or_null("Attack")
 	if health && attack_component:
 		health.hit_count += 1
-		health.damage(attack_component.damage)
+		health.deal_damage(attack_component.damage)
 		body.queue_free()

@@ -1,9 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwy0hv6keepvm"]
+[gd_scene load_steps=4 format=3 uid="uid://bwy0hv6keepvm"]
 
 [ext_resource type="Script" uid="uid://caa75y6r2clqk" path="res://bullets/bullet.gd" id="1_tnxwn"]
+[ext_resource type="Script" uid="uid://0j1xnx5na7sr" path="res://systems/components/attack_comp/attack.gd" id="2_wo3kc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tnxwn"]
+size = Vector2(8, 8)
 
 [node name="Bullet" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_tnxwn")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tnxwn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Attack" type="Node2D" parent="."]
+script = ExtResource("2_wo3kc")
+metadata/_custom_type_script = "uid://0j1xnx5na7sr"
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_bullet_in_screen"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_bullet_out_of_screen"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

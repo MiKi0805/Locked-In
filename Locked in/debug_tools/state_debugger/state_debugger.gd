@@ -7,7 +7,6 @@ extends Node2D
 ## A string variable written before the current state from tracked state machine.
 @export var pre_state_info: String = "Current state: "
 
-@export_group("Position")
 @export var offset: Vector2
 
 var label_default_position: Vector2
